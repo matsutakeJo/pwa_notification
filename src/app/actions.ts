@@ -28,19 +28,19 @@ export async function sendNotification(message: string) {
   if (!subscription) {
     throw new Error('No subscription available')
   }
- 
-  try {
-    await webpush.sendNotification(
-      subscription,
-      JSON.stringify({
-        title: 'Test Notification',
-        body: message,
-        icon: '/icon.png',
-      })
-    )
-    return { success: true }
-  } catch (error) {
-    console.error('Error sending push notification:', error)
-    return { success: false, error: 'Failed to send notification' }
-  }
+
+  // try {
+  //   await webpush.sendNotification(
+  //     subscription,
+  //     JSON.stringify({
+  //       title: 'Test Notification',
+  //       body: message,
+  //       icon: '/icon.png',
+  //     })
+  //   )
+  //   return { success: true }
+  // } catch (error) {
+  //   console.error('Error sending push notification:', error)
+  //   return { success: false, error: 'Failed to send notification' }
+  // }
 }
