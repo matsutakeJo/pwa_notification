@@ -29,6 +29,8 @@ export async function sendNotification(message: string) {
     throw new Error('No subscription available')
   }
 
+  return { success: true }
+
   // try {
   //   await webpush.sendNotification(
   //     subscription,
