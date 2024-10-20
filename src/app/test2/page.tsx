@@ -1,8 +1,8 @@
-import Image from "next/image";
+'use client'
 import { subscribe } from '../actions2'
 import * as React from "react";
 
-async function InstallPrompt() {
+function InstallPrompt() {
 
     // どのページにランディングされてもサービスワーカーが登録されるように、
     // 全ページでこのスクリプトが実行されるようにしたほうが無難です。
@@ -10,7 +10,11 @@ async function InstallPrompt() {
         if (window.navigator.serviceWorker !== undefined) {
             window.navigator.serviceWorker.register('/sw.js');
         }
-    }    
+    }
+
+    function callSubscription(){
+        subscribe();
+    }
 
     return (
         <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
@@ -18,15 +22,8 @@ async function InstallPrompt() {
                 <div className="flex gap-4 items-center flex-col sm:flex-row">
                     <button
                         className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-                        onClick={subscribe}
+                        onClick={callSubscription}
                     >
-                        <Image
-                            className="dark:invert"
-                            src="https://nextjs.org/icons/vercel.svg"
-                            alt="Vercel logomark"
-                            width={20}
-                            height={20}
-                        />
                         Deploy now
                     </button>
                 </div>
